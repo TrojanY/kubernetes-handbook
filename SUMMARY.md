@@ -10,6 +10,7 @@
 - [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 - [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 - [云原生应用之路——从Kubernetes到Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
+- [云原生编程语言Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
 
 ### 概念与原理
 
@@ -65,10 +66,12 @@
   - [Volume](concepts/volume.md)
   - [Persistent Volume（持久化卷）](concepts/persistent-volume.md)
   - [Storage Class](concepts/storageclass.md)
+  - [本地持久化存储](concepts/local-persistent-storage.md)
 - [集群扩展](concepts/extension.md)
   - [使用自定义资源扩展API](concepts/custom-resource.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
   - [APIService](concepts/apiservice.md)
+  - [Service Catalog](concepts/service-catalog.md)
 - [资源调度](concepts/scheduling.md)
 
 ### 用户指南
@@ -92,6 +95,7 @@
   - [IP伪装代理](guide/ip-masq-agent.md)
   - [使用kubeconfig或token进行用户身份认证](guide/auth-with-kubeconfig-or-token.md)
   - [Kubernetes中的用户与身份认证授权](guide/authentication.md)
+  - [Kubernetes集群安全性配置最佳实践](guide/kubernetes-security-best-practice.md)
 - [访问Kubernetes集群](guide/access-kubernetes-cluster.md)
   - [访问集群](guide/access-cluster.md)
   - [使用kubeconfig文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
@@ -129,9 +133,9 @@
   - [网络和集群性能测试](practice/network-and-cluster-perfermance-test.md)
   - [边缘节点配置](practice/edge-node-configuration.md)
   - [安装Nginx ingress](practice/nginx-ingress-installation.md)
-  - [安装配置DNS]
-    - [Kube-DNS](practice/configuring-dns.md)
-    - [Core-DNS](practice/coredns.md)
+  - [安装配置DNS](practice/dns-installation.md)
+    - [安装配置Kube-dns](practice/configuring-dns.md)
+    - [安装配置CoreDNS](practice/coredns.md)
 - [运维管理](practice/operation.md)
    - [Master节点高可用](practice/master-ha.md)
    - [服务滚动升级](practice/service-rolling-update.md)
@@ -147,6 +151,7 @@
     - [使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner](practice/using-heketi-gluster-for-persistent-storage.md)
     - [在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
   - [Ceph](practice/ceph.md)
+    - [用Helm托管安装Ceph集群并提供后端存储](practice/ceph-helm-install-guide-zh.md)
     - [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
   - [OpenEBS](practice/openebs.md)
     - [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
@@ -182,11 +187,17 @@
     - [安装和拓展Istio service mesh](usecases/install-and-expand-istio-mesh.md)
     - [集成虚拟机](usecases/integrating-vms.md)
     - [Istio中sidecar的注入规范及示例](usecases/sidecar-spec-in-istio.md)
+    - [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
+    - [Istio 教程](usecases/istio-tutorial.md)
   - [Linkerd](usecases/linkerd.md)
     - [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   - [Conduit](usecases/conduit.md)
     - [Condiut概览](usecases/conduit-overview.md)
     - [安装Conduit](usecases/conduit-installation.md)
+  - [Envoy](usecases/envoy.md)
+    - [Envoy的架构与基本术语](usecases/envoy-terminology.md)
+    - [Envoy作为前端代理](usecases/envoy-front-proxy.md)
+    - [Envoy mesh教程](usecases/envoy-mesh-in-kubernetes-tutorial.md)
 - [大数据](usecases/big-data.md)
   - [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   - [运行支持Kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
@@ -195,6 +206,7 @@
   - [FaaS-函数即服务](usecases/faas.md)
     - [OpenFaaS快速入门指南](usecases/openfaas-quick-start.md)
 - [边缘计算](usecases/edge-computing.md)
+- [人工智能](usecases/ai.md)
 
 ### 开发指南
 
@@ -205,6 +217,7 @@
 - [单元测试和集成测试](develop/testing.md)
 - [client-go示例](develop/client-go-sample.md)
 - [Operator](develop/operator.md)
+- [operator-sdk](develop/operator-sdk.md)
 - [高级开发指南](develop/advance-developer.md)
 - [社区贡献](develop/contribute.md)
 - [Minikube](develop/minikube.md)
@@ -224,3 +237,5 @@
   - [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
 - [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   - [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
+- [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
+- [认证Kubernetes管理员（CKA）说明](appendix/about-cka-candidate.md)

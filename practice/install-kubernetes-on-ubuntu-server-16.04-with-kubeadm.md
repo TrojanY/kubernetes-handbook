@@ -1,4 +1,4 @@
-# 用kubeadm在Ubuntu上快速构建Kubernetes基础集群
+# 用kubeadm在Ubuntu上快速构建Kubernetes测试集群
 
 本文将介绍如何在Ubuntu server 16.04版本上安装kubeadm，并利用kubeadm快速的在Ubuntu server 版本 16.04上构建一个kubernetes的基础的测试集群，用来做学习和测试用途，当前（2018-04-14）最新的版本是1.10.1。参考文档包括kubernetes官方网站的[kubeadm安装文档](https://kubernetes.io/docs/setup/independent/install-kubeadm/)以及[利用kubeadm创建集群](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)这两个文档。
 
@@ -28,16 +28,13 @@
 192.168.0.203   Ubuntu-3
 
 ```
-* 如果连接gcr网站不方便，无法下载镜像，会导致安装过程卡住，可以下载我导出的镜像包，[我导出的镜像](https://pan.baidu.com/s/1knjGYvxfSeiixWbK6Le8Jw)，解压缩以后是9个tar包，使用```docker load< xxxx.tar``` 导入即可）。
+* 如果连接gcr网站不方便，无法下载镜像，会导致安装过程卡住，可以下载我导出的镜像包，[我导出的镜像网盘链接](https://pan.baidu.com/s/1ZJFRt_UNCQvwcu9UENr_gw)，解压缩以后是多个个tar包，使用```docker load< xxxx.tar``` 导入各个文件即可）。
 ## 在所有节点上安装kubeadm
 查看apt安装源如下配置，使用阿里云的系统和kubernetes的源。
 
 ```bash
-# cat /etc/apt/sources.list
-```
-
-```
-#系统安装源
+$ cat /etc/apt/sources.list
+# 系统安装源
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial universe
@@ -45,7 +42,7 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
 deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-#kubeadm及kubernetes组件安装源
+# kubeadm及kubernetes组件安装源
 deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 ```
 
@@ -57,7 +54,6 @@ Building dependency tree
 Reading state information... Done
 docker.io is already the newest version (1.13.1-0ubuntu1~16.04.2).
 0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
-
 ```
 更新源，可以不理会gpg的报错信息。
 ```bash
@@ -113,7 +109,7 @@ kubeadm安装完以后，就可以使用它来快速安装部署Kubernetes集群
 
 因为使用要使用canal，因此需要在初始化时加上网络配置参数,设置kubernetes的子网为10.244.0.0/16，注意此处不要修改为其他地址，因为这个值与后续的canal的yaml值要一致，如果修改，请一并修改。
 
-这个下载镜像的过程涉及翻墙，因为会从gcr的站点下载容器镜像。。。（如果大家翻墙不方便的话，可以用[我导出的镜像](https://pan.baidu.com/s/1knjGYvxfSeiixWbK6Le8Jw),解压缩以后是9个tar包，使用```docker load< xxxx.tar``` 导入即可）。
+这个下载镜像的过程涉及翻墙，因为会从gcr的站点下载容器镜像。。。（如果大家翻墙不方便的话，可以用我在上文准备工作中提到的导出的镜像）。
 
 如果有能够连接gcr站点的网络，那么整个安装过程非常简单。
 

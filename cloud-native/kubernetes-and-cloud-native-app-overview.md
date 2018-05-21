@@ -28,7 +28,7 @@
 
 要想了解微服务的详细内容推荐阅读《微服务设计》（Sam Newman著），我写过这本书的读书笔记 - [微服务设计读书笔记](https://jimmysong.io/posts/microservice-reading-notes/)。
 
-下文中会谈到kubernetes与微服务的关系，其中kubernetes的service天生就适合与微服务。
+下文中会谈到kubernetes与微服务的关系，其中kubernetes的service天生就适合于微服务。
 
 ### 云原生概念介绍
 
@@ -36,7 +36,7 @@
 
 ![Cloud native思维导图](../images/cloud-native-architecutre-mindnode.jpg)
 
-云原生准确来说是一种文化，更是一种潮流，它是云计算的一个必然导向。它的意义在于让云成为云化战略成功的基石，而不是阻碍，如果业务应用上云之后开发和运维人员比原先还痛苦，成本还高的话，这样的云我们宁愿不不上。
+云原生准确来说是一种文化，更是一种潮流，它是云计算的一个必然导向。它的意义在于让云成为云化战略成功的基石，而不是阻碍，如果业务应用上云之后开发和运维人员比原先还痛苦，成本还高的话，这样的云我们宁愿不上。
 
 自从云的概念开始普及，许多公司都部署了实施云化的策略，纷纷搭建起云平台，希望完成传统应用到云端的迁移。但是这个过程中会遇到一些技术难题，上云以后，效率并没有变得奇高，故障也没有迅速定位。
 
@@ -87,7 +87,7 @@ Kuberentes可以说是乘着docker和微服务的东风，一经推出便迅速�
 
 **3.配置**
 
-将配置与代码分离，应用部署到kubernete中可以使用容器的环境变量或ConfigMap挂载到容器中。
+将配置与代码分离，应用部署到kubernetes中可以使用容器的环境变量或ConfigMap挂载到容器中。
 
 **4.后端服务**
 
@@ -451,9 +451,9 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
   --conf spark.kubernetes.executor.memoryOverhead=2g \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
   --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
 ~/Downloads/tendcloud_2.10-1.0.jar
 ```
