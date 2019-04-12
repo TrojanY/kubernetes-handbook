@@ -6,9 +6,7 @@
 
 ## 云原生
 
-* [云原生的定义](cloud-native/cloud-native-definition.md)
-* [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
-* [CNCF章程](cloud-native/cncf-charter.md)
+* [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 * [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
@@ -137,7 +135,7 @@
   * [安装dashboard插件](practice/dashboard-addon-installation.md)
   * [安装heapster插件](practice/heapster-addon-installation.md)
   * [安装EFK插件](practice/efk-addon-installation.md)
-* [使用kubeadm快速构建测试集群](practice/install-kubernetes-with-kubeadm.md)
+* [生产级的Kubernetes简化管理工具kubeadm](practice/install-kubernetes-with-kubeadm.md)
   * [使用kubeadm在Ubuntu Server 16.04上快速构建测试集群](practice/install-kubernetes-on-ubuntu-server-16.04-with-kubeadm.md)
 * [服务发现与负载均衡](practice/service-discovery-and-loadbalancing.md)
   * [安装Traefik ingress](practice/traefik-ingress-installation.md)
@@ -214,7 +212,8 @@
     * [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
     * [Istio教程](usecases/istio-tutorial.md)
     * [Istio免费学习资源汇总](usecases/istio-tutorials-collection.md)
-    * [深入理解Istio中的Sidecar注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
+    * [深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
+    * [深入理解Istio Service Mesh中的Envoy Sidecar代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
   * [Linkerd](usecases/linkerd.md)
     * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   * [Conduit](usecases/conduit.md)
@@ -243,14 +242,22 @@
 * [开发指南概览](develop/index.md)
 * [SIG和工作组](develop/sigs-and-working-group.md)
 * [开发环境搭建](develop/developing-environment.md)
-* [本地分布式开发环境搭建（使用Vagrant和Virtualbox）](develop/using-vagrant-and-virtualbox-for-development.md)
+  * [本地分布式开发环境搭建（使用Vagrant和Virtualbox）](develop/using-vagrant-and-virtualbox-for-development.md)
 * [单元测试和集成测试](develop/testing.md)
 * [client-go示例](develop/client-go-sample.md)
 * [Operator](develop/operator.md)
-* [operator-sdk](develop/operator-sdk.md)
+  * [operator-sdk](develop/operator-sdk.md)
+* [kubebuilder](develop/kubebuilder.md)
 * [高级开发指南](develop/advance-developer.md)
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)
+
+## CNCF
+
+* [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
+* [CNCF章程](cloud-native/cncf-charter.md)
+* [CNCF特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
+* [CNCF中的项目治理](cloud-native/cncf-project-governing.md)
 
 ## 附录
 
@@ -267,7 +274,12 @@
   * [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
   * [Kubernetes1.11更新日志](appendix/kubernetes-1.11-changelog.md)
   * [Kubernetes1.12更新日志](appendix/kubernetes-1.12-changelog.md)
+  * [Kubernetes1.13更新日志](appendix/kubernetes-1.13-changelog.md)
+  * [Kubernetes1.14更新日志](appendix/kubernetes-1.14-changelog.md)
 * [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   * [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
+  * [Kubernetes与云原生2018年年中总结及2019年展望](appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.md)
+* [CNCF年度报告解读](appendix/cncf-annual-report.md)
+  * [CNCF 2018年年度报告解读](appendix/cncf-annual-report-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
 * [认证Kubernetes管理员（CKA）说明](appendix/about-cka-candidate.md)

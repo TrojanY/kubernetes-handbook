@@ -1,5 +1,7 @@
 ## 采纳和演进
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 没有人会一下子采纳Service Mesh架构的所有组件，或者一次性将所有的应用都改造成Service Mesh的，都是渐渐式采纳，从非核心系统开始改造。采纳Service Mesh就两种路径：
 
 - 全盘采纳：通常对于新应用来说才会这样做，也叫做Greenfiled项目
@@ -57,4 +59,4 @@ Ingress或者边缘代理可以处理进出集群的流量，为了应对集群�
 
 ### 多集群部署和扩展
 
-以上都是单个服务网格集群的架构，所有的服务都位于同一个集群中，服务网格管理进出集群和集群内部的流量，当我们需要管理多个集群或者是引入外部的服务时就需要[网格扩展](https://preliminary.istio.io/zh/docs/setup/kubernetes/mesh-expansion/)和[多集群配置](https://preliminary.istio.io/zh/docs/setup/kubernetes/multicluster-install/)。
+以上都是单个服务网格集群的架构，所有的服务都位于同一个集群中，服务网格管理进出集群和集群内部的流量，当我们需要管理多个集群或者是引入外部的服务时就需要网格扩展和多集群配置。

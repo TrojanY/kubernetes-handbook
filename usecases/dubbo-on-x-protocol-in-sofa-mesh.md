@@ -1,5 +1,7 @@
 # SOFAMesh中运行Dubbo on x-protocol
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 原文作者：彭泽文，阿里巴巴UC事业部高级开发工程师，有改动。
 
 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服务发现机制，支持各种私有 RPC 协议低成本、易扩展的接入，快速享受 Service Mesh 所带来的红利。
@@ -285,8 +287,6 @@ SOFAMesh Github 地址：https://github.com/alipay/sofa-mesh
 ## 参考文档
 
 - [蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析 - servicemesher.com](http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/)
-- [在 Kubernetes 中快速开始 - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/quick-start/)
-- [注入 Istio sidecar - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/sidecar-injection/)
 - [Dubbo quick start - dubbo.incubator.apache.org](https://dubbo.incubator.apache.org/en-us/docs/user/quick-start.html)
 
-- 关于SOFAMesh的更多信息请访问 http://www.sofastack.tech
+- 关于SOFAMesh的更多信息请访问 https://www.sofastack.tech

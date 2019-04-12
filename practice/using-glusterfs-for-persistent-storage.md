@@ -74,7 +74,7 @@ State: Peer in Cluster (Connected)
 
 GlusterFS中的volume的模式有很多中，包括以下几种：
 
-- **分布卷（默认模式）**：即DHT, 也叫 分布卷: 将文件已hash算法随机分布到 一台服务器节点中存储。
+- **分布卷（默认模式）**：即DHT, 也叫 分布卷: 将文件以hash算法随机分布到 一台服务器节点中存储。
 - **复制模式**：即AFR, 创建volume 时带 replica x 数量: 将文件复制到 replica x 个节点中。
 - **条带模式**：即Striped, 创建volume 时带 stripe x 数量： 将文件切割成数据块，分别存储到 stripe x 个节点中 ( 类似raid 0 )。
 - **分布式条带模式**：最少需要4台服务器才能创建。 创建volume 时 stripe 2 server = 4 个节点： 是DHT 与 Striped 的组合型。
@@ -159,7 +159,7 @@ $ vi /etc/hosts
 ## 配置 endpoints
 
 ```bash
-$ curl -O https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/volumes/glusterfs/glusterfs-endpoints.json
+$ curl -O https://raw.githubusercontent.com/kubernetes/examples/master/staging/volumes/glusterfs/glusterfs-endpoints.json
 
 # 修改 endpoints.json ，配置 glusters 集群节点ip
 # 每一个 addresses 为一个 ip 组
@@ -188,7 +188,7 @@ $ kubectl get ep
 ## 配置 service
 
 ```bash
-$ curl -O https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/volumes/glusterfs/glusterfs-service.json
+$ curl -O https://raw.githubusercontent.com/kubernetes/examples/master/staging/volumes/glusterfs/glusterfs-service.json
 
 # service.json 里面查找的是 enpointes 的名称与端口，端口默认配置为 1，我改成了1990
 
@@ -202,7 +202,7 @@ $ kubectl get svc
 ## 创建测试 pod
 
 ```bash
-$ curl -O https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/volumes/glusterfs/glusterfs-pod.json
+$ curl -O https://raw.githubusercontent.com/kubernetes/examples/master/staging/volumes/glusterfs/glusterfs-pod.json
 
 # 编辑 glusterfs-pod.json
 # 修改 volumes  下的 path 为上面创建的 volume 名称
