@@ -214,8 +214,6 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 **注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
-详细信息请参阅 https://istio.io/zh/docs/examples/bookinfo/
-
 ![bookinfo示例](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
 
 ### Vistio
@@ -352,5 +350,4 @@ rm -rf .vagrant
 - [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
 - [coredns/deployment](https://github.com/coredns/deployment)
-- [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
-- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)
+- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)

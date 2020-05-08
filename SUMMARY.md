@@ -1,4 +1,4 @@
-# Summary
+# 目录
 
 ## 前言
 
@@ -10,6 +10,7 @@
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 * [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
+* [使用Rancher在阿里云上部署Kubenretes集群](cloud-native/setup-kubernetes-with-rancher-and-aliyun.md)
 * [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 * [云原生应用之路——从Kubernetes到Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
 * [云原生编程语言](cloud-native/cloud-native-programming-languages.md)
@@ -93,7 +94,7 @@
   * [Secret配置](guide/secret-configuration.md)
   * [管理namespace中的资源配额](guide/resource-quota-management.md)
 * [命令使用](guide/command-usage.md)
-  * [Docker用户过度到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
+  * [Docker用户过渡到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
   * [kubectl命令概览](guide/using-kubectl.md)
   * [kubectl命令技巧大全](guide/kubectl-cheatsheet.md)
   * [使用etcdctl访问kubernetes数据](guide/using-etcdctl-to-access-kubernetes-data.md)
@@ -205,15 +206,11 @@
     * [总结](usecases/service-mesh-conclusion.md)
   * [Istio](usecases/istio.md)
     * [安装并试用Istio service mesh](usecases/istio-installation.md)
-    * [配置请求的路由规则](usecases/configuring-request-routing.md)
-    * [安装和拓展Istio service mesh](usecases/install-and-expand-istio-mesh.md)
-    * [集成虚拟机](usecases/integrating-vms.md)
     * [Istio中sidecar的注入规范及示例](usecases/sidecar-spec-in-istio.md)
     * [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
-    * [Istio教程](usecases/istio-tutorial.md)
     * [Istio免费学习资源汇总](usecases/istio-tutorials-collection.md)
-    * [深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
-    * [深入理解Istio Service Mesh中的Envoy Sidecar代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
+    * [Sidecar的注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
+    * [Envoy Sidecar代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
   * [Linkerd](usecases/linkerd.md)
     * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   * [Conduit](usecases/conduit.md)
@@ -223,17 +220,17 @@
     * [Envoy的架构与基本术语](usecases/envoy-terminology.md)
     * [Envoy作为前端代理](usecases/envoy-front-proxy.md)
     * [Envoy mesh教程](usecases/envoy-mesh-in-kubernetes-tutorial.md)
-  * [SOFAMesh](usecases/sofamesh.md)
-    * [SOFAMesh中的Dubbo on x-protocol](usecases/dubbo-on-x-protocol-in-sofa-mesh.md)
-  * [SOFAMosn](usecases/sofamosn.md)
-    * [使用 SOFAMosn 构建 SOFAMesh](usecases/sofamosn-in-sofamesh.md)
+  * [MOSN](usecases/mosn.md)
 * [大数据](usecases/big-data.md)
   * [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   * [运行支持Kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
 * [Serverless架构](usecases/serverless.md)
   * [理解Serverless](usecases/understanding-serverless.md)
-  * [FaaS-函数即服务](usecases/faas.md)
+  * [FaaS（函数即服务）](usecases/faas.md)
     * [OpenFaaS快速入门指南](usecases/openfaas-quick-start.md)
+  * [Knative](usecases/knative.md)
+* [云原生应用标准](usecases/cloud-native-app-standard.md)
+  * [OAM（开放应用模型）](usecases/oam.md)
 * [边缘计算](usecases/edge-computing.md)
 * [人工智能](usecases/ai.md)
 
@@ -252,12 +249,14 @@
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)
 
-## CNCF
+## CNCF（云原生计算基金会）
 
 * [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
 * [CNCF章程](cloud-native/cncf-charter.md)
 * [CNCF特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
+* [开源项目加入CNCF Sandbox的要求](cloud-native/cncf-sandbox-criteria.md)
 * [CNCF中的项目治理](cloud-native/cncf-project-governing.md)
+* [CNCF Ambassador](cloud-native/cncf-ambassador.md)
 
 ## 附录
 
@@ -276,9 +275,10 @@
   * [Kubernetes1.12更新日志](appendix/kubernetes-1.12-changelog.md)
   * [Kubernetes1.13更新日志](appendix/kubernetes-1.13-changelog.md)
   * [Kubernetes1.14更新日志](appendix/kubernetes-1.14-changelog.md)
+  * [Kubernetes1.15更新日志](appendix/kubernetes-1.15-changelog.md)
 * [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   * [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
-  * [Kubernetes与云原生2018年年中总结及2019年展望](appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.md)
+  * [Kubernetes与云原生2018年年终总结及2019年展望](appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.md)
 * [CNCF年度报告解读](appendix/cncf-annual-report.md)
   * [CNCF 2018年年度报告解读](appendix/cncf-annual-report-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)

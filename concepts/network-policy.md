@@ -2,7 +2,7 @@
 
 网络策略说明一组 `Pod` 之间是如何被允许互相通信，以及如何与其它网络 Endpoint 进行通信。 `NetworkPolicy` 资源使用标签来选择 `Pod`，并定义了一些规则，这些规则指明允许什么流量进入到选中的 `Pod` 上。关于 Network Policy 的详细用法请参考 [Kubernetes 官网](https://kubernetes.io/docs/concepts/services-networking/network-policies/)。
 
-Network Policy 的作用对象是 Pod，也可以应用到 Namespace 和集群的 Ingress、Egress 流量。Network Policy 是作用在 L3/4 层的，即限制的是对 IP 地址和端口的访问，如果需要对应用层做访问限制需要使用如 [Istio](https://istio.io/zh) 这类 Service Mesh。
+Network Policy 的作用对象是 Pod，也可以应用到 Namespace 和集群的 Ingress、Egress 流量。Network Policy 是作用在 L3/4 层的，即限制的是对 IP 地址和端口的访问，如果需要对应用层做访问限制需要使用如 [Istio](https://istio.io) 这类 Service Mesh。
 
 ## 前提条件
 
@@ -55,9 +55,9 @@ spec:
 
 *将上面配置 POST 到 API Server 将不起任何作用，除非选择的网络方案支持网络策略。*
 
-**必选字段**：像所有其它 Kubernetes 配置一样， `NetworkPolicy` 需要 `apiVersion`、`kind` 和 `metadata` 这三个字段，关于如何使用配置文件的基本信息，可以查看 [这里](https://kubernetes.io/docs/user-guide/configuring-containers) 和 [这里](https://kubernetes.io/docs/user-guide/working-with-resources)。
+**必选字段**：像所有其它 Kubernetes 配置一样， `NetworkPolicy` 需要 `apiVersion`、`kind` 和 `metadata` 这三个字段，关于如何使用配置文件的基本信息，可以查看 [这里](https://kubernetes.io/docs/user-guide/configuring-containers)。
 
-**spec**：`NetworkPolicy` [spec](https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status) 具有在给定 Namespace 中定义特定网络的全部信息。
+**spec**：`NetworkPolicy` spec 具有在给定 Namespace 中定义特定网络的全部信息。
 
 **podSelector**：每个 `NetworkPolicy` 包含一个 `podSelector`，它可以选择一组应用了网络策略的 Pod。由于 `NetworkPolicy` 当前只支持定义 `ingress` 规则，这个 `podSelector` 实际上为该策略定义了一组 “目标Pod”。示例中的策略选择了标签为 “role=db” 的 Pod。一个空的 `podSelector` 选择了该 Namespace 中的所有 Pod。
 

@@ -1,6 +1,6 @@
-## 深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持
+# 深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持
 
-**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+**注意：本文基于 Istio 1.0。**
 
 在讲解 Istio 如何将 Envoy 代理注入到应用程序 Pod 中之前，我们需要先了解以下几个概念：
 
@@ -23,10 +23,6 @@ productpage istio-proxy
 
 使用 Sidecar 模式部署服务网格时，无需在节点上运行代理（因此您不需要基础结构的协作），但是集群中将运行多个相同的 Sidecar 副本。从另一个角度看：我可以为一组微服务部署到一个服务网格中，你也可以部署一个有特定实现的服务网格。在 Sidecar 部署方式中，你会为每个应用的容器部署一个伴生容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod 中，在原有的应用容器旁边运行一个 Sidecar 容器，可以理解为两个容器共享存储、网络等资源，可以广义的将这个注入了 Sidecar 容器的 Pod 理解为一台主机，两个容器共享主机资源。
 
-例如下图 [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)的架构图中描述的，MOSN 作为 Sidecar 的方式和应用运行在同一个 Pod 中，拦截所有进出应用容器的流量，[SOFAMesh](https://github.com/alipay/sofa-mesh) 兼容 Istio，其中使用 Go 语言开发的 [SOFAMosn](https://github.com/alipay/sofa-mosn) 替换了 Envoy。
-
-![SOFAMesh架构图](https://ws4.sinaimg.cn/large/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg)
-
 **注意**：下文中所指的 Sidecar 都是指的 Envoy 代理容器。
 
 ## Init 容器
@@ -41,7 +37,7 @@ Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有�
 
 在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service 中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
 
-关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)。
+关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](../concepts/init-containers.md)。
 
 ## Sidecar 注入示例分析
 
@@ -256,7 +252,7 @@ Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Isti
 -p 15001 -u 1337 -m REDIRECT -i '*' -x "" -b 9080 -d ""
 ```
 
-我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxy_init) 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
+我们再检查下该容器的 Dockerfile 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
 
 ```docker
 FROM ubuntu:xenial
@@ -269,7 +265,7 @@ ADD istio-iptables.sh /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/istio-iptables.sh"]
 ```
 
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables.sh` 脚本，再按图索骥看看这个脚本里到底写的什么，该脚本的位置在 Istio 源码仓库的 [tools/deb/istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh)，一共 300 多行，就不贴在这里了。下面我们就来解析下这个启动脚本。
+我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables.sh` 脚本，再按图索骥看看这个脚本里到底写的什么，该脚本的位置在 Istio 源码仓库的 `tools/deb/istio-iptables.sh`，一共 300 多行，就不贴在这里了。下面我们就来解析下这个启动脚本。
 
 ### Init 容器启动入口
 
@@ -340,7 +336,7 @@ $ sudo -i
 
 下图展示了 iptables 调用链。
 
-![iptables 调用链](https://ws4.sinaimg.cn/large/0069RVTdly1fv5hukl647j30k6145gnt.jpg)
+![iptables 调用链](../images/0069RVTdly1fv5hukl647j30k6145gnt.jpg)
 
 ### iptables 中的表
 
@@ -366,7 +362,7 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 
 下图是 iptables 的调用链顺序。
 
-![iptables 调用链](https://ws1.sinaimg.cn/large/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
+![iptables 调用链](../images/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
 
 ### iptables 命令
 
@@ -398,11 +394,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
 
-![iptables结构图](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5dm4a9ygj30w50czdi3.jpg)
-
-图片来自[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)
-
-
+![iptables结构图](../images/0069RVTdgy1fv5dm4a9ygj30w50czdi3.jpg)
 
 每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
 
@@ -428,7 +420,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持 Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](https://ws1.sinaimg.cn/large/0069RVTdgy1fv5doj8fuij31kw0ytn7h.jpg)
+![Envoy sidecar 流量劫持 Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](../images/0069RVTdgy1fv5doj8fuij31kw0ytn7h.jpg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
@@ -486,7 +478,7 @@ Chain ISTIO_REDIRECT (2 references)
 - 所有来自 istio-proxy 用户空间的流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
 - 如果目的地是 localhost 但是流量又不是来自 istio-proxy 用户空间的就跳转到 `ISTIO_REDIRECT` 链
 
-以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh) 脚本生成的，详细过程可以查看该脚本。
+以上 iptables 规则都是 Init 容器启动的时使用 istio-iptables.sh 脚本生成的，详细过程可以查看该脚本。
 
 ## 查看 Envoy 运行状态
 
@@ -686,9 +678,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 
 
-![Istio bookinfo](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
-
-图片来自 [Istio 官方网站](https://istio.io/zh/docs/examples/bookinfo/)
+![Istio bookinfo](../images/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
 
 对照 bookinfo 示例的 productpage 的查看建立的连接。在 `productpage-v1-745ffc55b7-2l2lw` Pod 的 `istio-proxy` 容器中使用 root 用户查看打开的端口。
 
@@ -714,10 +704,8 @@ envoy    11 istio-proxy   63u  IPv4 338525      0t0  TCP productpage-v1-745ffc55
 
 ## 参考
 
-- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/ - jimmysong.io)
 - [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)
 - [JSONPath Support - kubernetes.io](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 - [iptables 命令使用说明 - wangchujiang.com](https://wangchujiang.com/linux-command/c/iptables.html)
 - [How To List and Delete Iptables Firewall Rules - digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules)
 - [一句一句解说 iptables的详细中文手册 - cnblog.com](https://www.cnblogs.com/fhefh/archive/2011/04/04/2005249.html)
-- [常见iptables使用规则场景整理 - aliang.org](https://www.aliang.org/Linux/iptables.html)

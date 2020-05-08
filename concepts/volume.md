@@ -107,8 +107,6 @@ spec:
 
 **重要提示**：您必须先拥有自己的 Ceph 服务器，然后才能使用它。
 
-有关更多详细信息，请参见[CephFS示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/cephfs/)。
-
 ### csi
 
 CSI 代表[容器存储接口](https://github.com/container-storage-interface/spec/blob/master/spec.md)，CSI 试图建立一个行业标准接口的规范，借助 CSI 容器编排系统（CO）可以将任意存储系统暴露给自己的容器工作负载。有关详细信息，请查看[设计方案](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)。
@@ -252,8 +250,6 @@ spec:
 `glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到您的集群中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。 GlusterFS 可以同时由多个写入挂载。
 
 **重要提示**：您必须先自行安装 GlusterFS，才能使用它。
-
-有关更多详细信息，请参阅 [GlusterFS](https://github.com/kubernetes/examples/tree/master/staging/volumes/glusterfs) 示例。
 
 ### hostPath
 
@@ -688,8 +684,6 @@ spec:
 除了之前列出的卷类型之外，存储供应商可以创建自定义插件而不将其添加到 Kubernetes 存储库中。可以通过使用 `FlexVolume` 插件来实现。
 
 `FlexVolume`使用户能够将供应商卷挂载到容器中。供应商插件是使用驱动程序实现的，该驱动程序支持由 `FlexVolume` API定义的一系列卷命令。驱动程序必须安装在每个节点的预定义卷插件路径中。
-
-更多细节可以在[这里](https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md)找到。
 
 ## 挂载传播
 

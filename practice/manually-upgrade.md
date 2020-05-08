@@ -35,7 +35,7 @@
 ### 准备
 
 1. 备份kubernetes原先的二进制文件和配置文件。
-2. 下载最新版本的kubernetes二进制包，如1.8.5版本，查看[changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md)，下载二进制包，我们使用的是[kubernetes-server-linux-amd64.tar.gz](https://dl.k8s.io/v1.8.5/kubernetes-server-linux-amd64.tar.gz)，分发到集群的每个节点上。
+2. 下载最新版本的kubernetes二进制包，如1.8.5版本，下载二进制包，我们使用的是[kubernetes-server-linux-amd64.tar.gz](https://dl.k8s.io/v1.8.5/kubernetes-server-linux-amd64.tar.gz)，分发到集群的每个节点上。
 
 ### 升级master节点
 
@@ -119,7 +119,6 @@ NAME           STATUS    ROLES     AGE       VERSION
 
 - [Cluster Upgrade #2524](https://github.com/kubernetes/kubernetes/issues/2524)
 - [Upgrading self-hosted Kubernetes](https://coreos.com/matchbox/docs/latest/bootkube-upgrades.html)
-- [Upgrading Kubernetes - kops](https://github.com/kubernetes/kops/blob/master/docs/upgrade.md)
 - [How to Upgrade a Kubernetes Cluster With No Downtime](https://medium.com/retailmenot-engineering/zero-downtime-kubernetes-cluster-upgrades-aab4cac943d2)
 - [manual upgrade/downgrade testing for Kubernetes 1.6 - google group](https://groups.google.com/forum/#!topic/kubernetes-dev/jDbGKAsfo4Q)
 - [Notes/Instructions for Manual Upgrade Testing1.5 -> 1.6](https://docs.google.com/document/d/1DtQFhxmKSZJJ_yv8ttweqotburHHZWxaCYnFbjLDA5g/edit)

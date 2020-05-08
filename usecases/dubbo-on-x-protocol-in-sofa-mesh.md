@@ -1,6 +1,6 @@
 # SOFAMesh中运行Dubbo on x-protocol
 
- **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 原文作者：彭泽文，阿里巴巴UC事业部高级开发工程师，有改动。
 
@@ -15,13 +15,13 @@ X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mes
 1. 部署 Kubernetes 集群，建议使用 https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
 2. 安装 kubectl 命令行工具，请参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
 3. 安装 VM Driver，推荐安装 Virtual Box、Mac 用户也可以选择 hyperkit
-4. 了解 Istio Traffic Management 相关概念，相关链接：[https://istio.io/zh/docs/tasks/traffic-management/](https://istio.io/zh/docs/tasks/traffic-management/)
+4. 了解 Istio Traffic Management 相关概念
 
 ## 部署
 
 先看部署效果图：
 
-![Mosn x-protocol部署图.png | left | 747x382](https://cdn.nlark.com/yuque/0/2018/png/151172/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png "")
+![Mosn x-protocol部署图](../images/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png)
 
 本示例中dubbo-consumer的部署方式采用直连模式，即不走注册中心，完全依托kubernetes平台提供的服务注册及服务发现能力。
 
@@ -58,7 +58,7 @@ kubectl get pods --namespace=kube-system
 从 GitHub 拉取最新代码：
 
 ```bash
-git clone https://github.com/alipay/sofa-mesh.git
+git clone https://github.com/sofastack/sofa-mesh.git
 cd sofa-mesh
 ```
 
@@ -92,7 +92,7 @@ make istioctl-install
 kubectl apply -f samples/e2e-dubbo/platform/kube/e2e-dubbo-ns.yaml
 ```
 
-### 4. 注入 SOFAMosn
+### 4. 注入 MOSN
 
 部署 dubbo-consumer 和 dubbo-provider，部署前需要先使用 istioctl 进行 sidecar 注入，以下示例采用手动注入方式，也可以通过 istio namespace inject 功能来自动注入。
 
@@ -131,7 +131,7 @@ e2e-dubbo-provider   ClusterIP   192.168.1.62    <none>        12345/TCP   10s
 ```
 
 e2e-dubbo-consumer 是一个 Dubbo 客户端应用，它暴露了一个 8080 端口的 HTTP 服务，方便我们进行验证，e2e-dubbo-provider 是一个 Dubbo 应用。
-当 e2e-dubbo-consumer 通过 12345 端口调用 e2e-dubbo-provider 时，流量会被 IPtable 规则拦截，导流给 SOFAMosn。
+当 e2e-dubbo-consumer 通过 12345 端口调用 e2e-dubbo-provider 时，流量会被 IPtable 规则拦截，导流给 MOSN。
 
 ## 验证路由能力
 
@@ -282,7 +282,7 @@ istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.destinationrul
 istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.weight.vs.yaml
 ```
 
-SOFAMesh Github 地址：https://github.com/alipay/sofa-mesh
+SOFAMesh Github 地址：https://github.com/sofastack/sofa-mesh
 
 ## 参考文档
 
