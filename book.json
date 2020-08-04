@@ -6,7 +6,10 @@
     "links": {
         "sidebar": {
             "回到主页": "https://jimmysong.io",
-            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native"
+            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
+            "云原生社区": "https://cloudnative.to",
+            "中国云原生发展白皮书2020": "https://cloudnativeindustryalliance.github.io/whitepaper2020/",
+            "云原生应用白皮书": "https://jimmysong.io/guide-to-cloud-native-app/"
         }
     },
     "plugins": [
@@ -27,7 +30,6 @@
         "sitemap-general",
         "lightbox",
         "ga",
-        "copy-code-button",
         "alerts"
     ],
     "pluginsConfig": {
@@ -42,7 +44,7 @@
             "label": "编辑本页"
         },
         "image-captions": {
-            "caption": "图片 - _CAPTION_"
+            "caption": "图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_：_CAPTION_"
         },
         "github-buttons": {
             "repo": "rootsongjc/kubernetes-handbook",
@@ -50,7 +52,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster>给开发者和架构师的云计算指南 - 极客时间专栏《深入浅出云计算》</a> | <a href=https://jimmysong.io/contact/>加入云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "copyright": "<a href=https://cloudnative.to/contact/>加入云原生社区·共谱云原生新篇章</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
